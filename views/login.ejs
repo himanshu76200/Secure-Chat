@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 100%;
+        }
+        .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    </style>
+    <body>
+
+    <h1>Welcome Back!</h1>
+    <br>
+    <div class="row">
+        <form action="/send_message" method="post">
+            <button name="b1">send Message</button>
+        </form>
+
+        <form action="/view_message" method="post">
+            <button name="b2">Check Message</button>
+        </form>
+    </div>
+
+    </body>
+</html>
