@@ -22,14 +22,11 @@
 
     <h1>Welcome Back!</h1>
     <br>
-    <div class="row">
-        <form action="/send_message" method="post">
-            <button name="b1">send Message</button>
-        </form>
-
-        <form action="/view_message" method="post">
-            <button name="b2">Check Message</button>
-        </form>
+    <div class="btn-group">
+        <button class="button" name="b1" type="submit" onclick="window.location.href='http://localhost:8080/login/send_message';">SEND MESSAGE</button>
+        <br>
+        <button class="button" name="b2" type="submit" onclick="window.location.href='http://localhost:8080/login/view_message';">VIEW MESSAGE</button>
+        <br>
     </div>
 
     </body>

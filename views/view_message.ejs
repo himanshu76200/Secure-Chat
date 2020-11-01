@@ -1,5 +1,56 @@
-<h1>Your Messages!</h1>
-<br>
-<p>
-    Message from <strong><%=sender%></strong> is:  <strong><%=message%></strong>
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style> 
+table, td, th { 
+ border: 1px solid #ddd; 
+ text-align: left; 
+} 
+table { 
+ border-collapse: collapse; 
+ width: 50%; 
+} 
+.table-data{ 
+ position: relative; 
+ left:150px; 
+ top:100px; 
+} 
+th, td { 
+ padding: 15px; 
+} 
+</style>
+  <title>recieved_messages!!</title>
+</head>
+<body>
+    <div class="table-data">
+<h2>Messages recieved!!</h2>
+    <table border="1">
+        <tr>
+            <th>S.N</th>
+            <th>Received From</th>
+            <th>Message</th>
+            <!-- <th>reply to conversation</th> -->
+        </tr>
+        
+        <%
+        if(data.length!=0){
+        var i=1;
+        data.forEach(function(data){
+        %>
+        <tr>
+            <td><%=i; %></td>
+            <td><%=data.user_from %></td>
+            <td><%=data.message %></td>
+            <td><a href="http://localhost:8080/login/send_message">Reply</a></td>
+            <!-- <td><a href="/delete/<%=data.id%>">Delete</a></td> -->
+        </tr>
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="7">No Data Found</td>
+            </tr>
+        <% } %>
+    </table>
+    </div>
+</body>
+</html>

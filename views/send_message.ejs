@@ -1,1 +1,11 @@
-<h1>SEND MESSAGE</h1>
+<h1> <strong><%=name%></strong> WELCOME </h1>
+<h2> YOUR CHATS ARE END-TO-END ENCRYPTED </h2>
+
+<p class="lead">Enter USERNAME AND MESSAGE YOU WANT TO SEND!!</p>
+<form method="POST" action='/send'>
+    <input type="text" name="username" class="form" placeholder="USERNAME" required>
+    <br>
+    <input type="text" name="message" class="form" placeholder="MESSAGE" required>
+    <br><br>
+    <button class = "button">SEND</button>
+</form>
