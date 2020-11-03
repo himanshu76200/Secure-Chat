@@ -40,7 +40,7 @@ himanshu.generateKeys();
 const arun = crypto.createECDH('secp256k1');
 arun.generateKeys();
 
-	// converting himanshu public key to base64 string to transfer it to arun
+// converting himanshu public key to base64 string to transfer it to arun
 
 const himanshuPublicKeyBase64 = himanshu.getPublicKey().toString('base64');
 const arunPublicKeyBase64 = arun.getPublicKey().toString('base64');
@@ -83,13 +83,6 @@ app.get('/login', function(req, res){
 
 app.get("/login/view_message", function(req, res){
 	connection.query("SELECT * FROM messages WHERE user_to = ?" , [globaluser], function(err, results){
-		// var i;
-		// for(i =0;i<results.length;i++) {
-		// 	var mykey = crypto.createDecipher('aes-128-cbc', 'mypassword');
-		// 	var mystr = mykey.update(results[i].message, 'hex', 'utf8')
-		// 	mystr += mykey.final('utf8');
-		// 	results[i].message = mystr;
-		// }
 		var i;
 		for(i=0;i<results.length;i++) {
 			const rec_paylod = Buffer.from(results[i].message, 'base64').toString('hex');
@@ -110,7 +103,6 @@ app.get("/login/view_message", function(req, res){
 					 Buffer.from(rec_iv, 'hex')
 				);
 				decipher.setAuthTag(Buffer.from(rec_auth_tag, 'hex'));
-				// decipher.setAuthTag(crypto.randomBytes(16));
 				let decrypted = decipher.update(rec_encrypted, 'hex', 'utf8');
 				decrypted += decipher.final('utf8');
 				console.log(decrypted);
@@ -130,13 +122,6 @@ app.get("/login/send_message", function(req, res){
 app.post("/send", function(req, res){
 	var user_to = req.body.username;
 	var MESSAGE = req.body.message;
-	
-	// var mykey = crypto.createCipher('aes-128-cbc', 'mypassword');
-	// var mystr = mykey.update(message, 'utf8', 'hex')
-	// mystr += mykey.final('hex');
-	// console.log(mystr);	
-	// var message = mystr;
-
 	const IV = crypto.randomBytes(16);
 	const cipher = crypto.createCipheriv('aes-256-gcm', Buffer.from(himanshuSharedKey, 'hex'), IV);
 
