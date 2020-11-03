@@ -103,6 +103,7 @@ app.get("/login/view_message", function(req, res){
 					 Buffer.from(rec_iv, 'hex')
 				);
 				decipher.setAuthTag(Buffer.from(rec_auth_tag, 'hex'));
+				// decipher.setAuthTag(crypto.randomBytes(16));
 				let decrypted = decipher.update(rec_encrypted, 'hex', 'utf8');
 				decrypted += decipher.final('utf8');
 				console.log(decrypted);
