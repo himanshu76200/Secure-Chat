@@ -1,1 +1,1 @@
-delete from messages;
+SELECT * FROM user;
